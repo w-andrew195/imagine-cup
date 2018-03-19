@@ -17,6 +17,7 @@ import StartScreen from './screens/start-screen';
 import RegisterScreen from './screens/register-screen';
 import SignInScreen from './screens/sign-in-screen';
 import HomeScreen from './screens/home-screen';
+import TestScreen from './screens/test-screen';
 
 const RootStack = StackNavigator(
     { // Route config object open
@@ -31,6 +32,9 @@ const RootStack = StackNavigator(
         },
         Home : {
             screen: HomeScreen
+        },
+        Test : {
+            screen: TestScreen
         },
     },
     { // Options object

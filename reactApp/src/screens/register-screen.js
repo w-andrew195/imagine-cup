@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 
 class RegisterScreen extends Component {
+    static navigationOptions = {
+        title: 'Register',
+    };
+
     nav = this.props.navigation;
 
     render() {

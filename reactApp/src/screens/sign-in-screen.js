@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 
 class SignInScreen extends Component {
+    static navigationOptions = {
+        title: 'Sign In',
+    };
+
     navi = this.props.navigation.navigate;
 
     render() {

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 
 class HomeScreen extends Component {
-    nav = this.props.navigation;
 
     render() {
+        navi = this.props.navigation;
         return (
             <View>
                 <Text>I am a placeholder HomeScreen</Text>
                 <Button
-                    title="Go to Start"
-                    onPress={() => this.nav.navigate('Start')}
+                    title="Go to Test"
+                    onPress={() => navi.navigate('Test')}
                 />
             </View>
         );

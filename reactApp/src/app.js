@@ -11,25 +11,17 @@ import {
   Text,
   View
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, SwitchNavigator } from 'react-navigation';
 
 import StartScreen from './screens/start-screen';
+import WelcomeScreen from './screens/welcome-screen';
+
 import RegisterScreen from './screens/register-screen';
-import SignInScreen from './screens/sign-in-screen';
 import HomeScreen from './screens/home-screen';
 import TestScreen from './screens/test-screen';
 
-const RootStack = StackNavigator(
+const AppStack = StackNavigator(
     { // Route config object open
-        Start: {
-            screen: StartScreen
-        },
-        SignIn: {
-            screen: SignInScreen
-        },
-        Register: {
-            screen: RegisterScreen
-        },
         Home : {
             screen: HomeScreen
         },
@@ -37,16 +29,26 @@ const RootStack = StackNavigator(
             screen: TestScreen
         },
     },
-    { // Options object
-        initialRouteName: 'Start',
+);
+
+const AuthStack = StackNavigator(
+    {
+        Welcome: {
+            screen: WelcomeScreen
+        },
+        Register: {
+            screen: RegisterScreen
+        },
     }
 );
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-        <RootStack />
-    );
-  }
-}
+export default SwitchNavigator(
+    {
+        AuthLoading: StartScreen,
+        App: AppStack,
+        Auth: AuthStack
+    },
+    {
+        initialRoutName: 'AuthLoading',
+    }
+);

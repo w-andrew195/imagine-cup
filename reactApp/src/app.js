@@ -11,38 +11,44 @@ import {
   Text,
   View
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, SwitchNavigator } from 'react-navigation';
 
 import StartScreen from './screens/start-screen';
-import RegisterScreen from './screens/register-screen';
-import SignInScreen from './screens/sign-in-screen';
-import HomeScreen from './screens/home-screen';
+import WelcomeScreen from './screens/welcome-screen';
 
-const RootStack = StackNavigator(
+import RegisterScreen from './screens/register-screen';
+import HomeScreen from './screens/home-screen';
+import TestScreen from './screens/test-screen';
+
+const AppStack = StackNavigator(
     { // Route config object open
-        Start: {
-            screen: StartScreen
+        Home : {
+            screen: HomeScreen
         },
-        SignIn: {
-            screen: SignInScreen
+        Test : {
+            screen: TestScreen
+        },
+    },
+);
+
+const AuthStack = StackNavigator(
+    {
+        Welcome: {
+            screen: WelcomeScreen
         },
         Register: {
             screen: RegisterScreen
         },
-        Home : {
-            screen: HomeScreen
-        },
-    },
-    { // Options object
-        initialRouteName: 'Start',
     }
 );
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-        <RootStack />
-    );
-  }
-}
+export default SwitchNavigator(
+    {
+        AuthLoading: StartScreen,
+        App: AppStack,
+        Auth: AuthStack
+    },
+    {
+        initialRoutName: 'AuthLoading',
+    }
+);

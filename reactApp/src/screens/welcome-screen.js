@@ -13,7 +13,7 @@ class WelcomeScreen extends Component {
             <View>
                 <Text>LOGO GOES HERE</Text>
                 <TextInput placeholder='Username' />
-                <TextInput placeholder='Password' />
+                <TextInput placeholder='Password' secureTextEntry={true} />
 
                 <Button
                     title='Sign In'

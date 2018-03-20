@@ -8,7 +8,6 @@ class RegisterScreen extends Component {
 
 
     render() {
-        navi = this.props.navigation;
         return (
             <View>
                 <Text>I am a placeholder RegisterScreen</Text>
@@ -19,10 +18,19 @@ class RegisterScreen extends Component {
                 <TextInput placeholder='Re-enter Password' secureTextEntry={true} />
                 <Button
                     title="Finish"
-                    onPress={() => navi.navigate('App')}
+                    onPress={this._registerAsync}
                 />
             </View>
         );
+    }
+
+    _registerAsync = async () => {
+        // Call to azure goes here
+
+        //await AsyncStorage.setItem('userToken', 'abc');
+
+        // Send straight to app stack for now
+        this.props.navigation.navigate('App');
     }
 }
 

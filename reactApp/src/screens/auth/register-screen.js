@@ -30,7 +30,7 @@ class RegisterScreen extends Component {
         //await AsyncStorage.setItem('userToken', 'abc');
 
         // Send straight to app stack for now
-        this.props.navigation.navigate('App');
+        this.props.navigation.navigate('Profile');
     }
 }
 

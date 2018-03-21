@@ -13,22 +13,19 @@ import {
 } from 'react-native';
 import { StackNavigator, SwitchNavigator } from 'react-navigation';
 
-import StartScreen from './screens/start-screen';
-import WelcomeScreen from './screens/welcome-screen';
+import StartScreen from './screens/auth/start-screen';
+import WelcomeScreen from './screens/auth/welcome-screen';
+import RegisterScreen from './screens/auth/register-screen';
 
-import RegisterScreen from './screens/register-screen';
-import HomeScreen from './screens/home-screen';
-import TestScreen from './screens/test-screen';
+import HomeTabs from './screens/home-navigator';
 
 const AppStack = StackNavigator(
-    { // Route config object open
+    {
         Home : {
-            screen: HomeScreen
-        },
-        Test : {
-            screen: TestScreen
+            screen: HomeTabs
         },
     },
+    { navigationOptions: { header : null } },
 );
 
 const AuthStack = StackNavigator(

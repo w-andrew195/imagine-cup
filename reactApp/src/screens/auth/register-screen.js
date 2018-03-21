@@ -10,14 +10,15 @@ class RegisterScreen extends Component {
     render() {
         return (
             <View>
-                <Text>I am a placeholder RegisterScreen</Text>
                 <TextInput placeholder='Username' />
                 <TextInput placeholder='Email Address' keyboardType='email-address' />
                 <TextInput placeholder='Date of Birth' keyboardType='numeric' />
                 <TextInput placeholder='Password' secureTextEntry={true} />
                 <TextInput placeholder='Re-enter Password' secureTextEntry={true} />
+                <Text>{"\n"}</Text>
                 <Button
                     title="Finish"
+                    color='hsl(88, 50%, 53%)'
                     onPress={this._registerAsync}
                 />
             </View>

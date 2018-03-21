@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, TextInput , View } from 'react-native';
+import { Button, Image, StyleSheet, Text, TextInput , View } from 'react-native';
 
 class WelcomeScreen extends Component {
     static navigationOptions = {
@@ -7,22 +7,35 @@ class WelcomeScreen extends Component {
         header: null
     };
 
+    static logo = require( "./sporkly_logo_485.png");
 
     render() {
         return (
             <View>
-                <Text>LOGO GOES HERE</Text>
+                <View style={styles.logo}>
+                    <Image
+                        source={ require( '../../assets/sporkly_logo_485.png') }
+                        style={{width: 220, height: 220}}
+                    />
+                </View>
+
                 <TextInput placeholder='Username' />
                 <TextInput placeholder='Password' secureTextEntry={true} />
 
-                <Button
-                    title='Sign In'
-                    onPress={this._signInAsync}
-                />
-                <Button
-                    title='Register'
-                    onPress={() => this.props.navigation.navigate('Register')}
-                />
+                <Text>{"\n"}</Text>
+                <View style={styles.button}>
+                    <Button
+                        title='Sign In'
+                        onPress={this._signInAsync}
+                        color='hsl(88, 50%, 53%)'
+                    />
+                    <Text>{"\n"}</Text>
+                    <Button
+                        title='Register'
+                        onPress={() => this.props.navigation.navigate('Register')}
+                        color='hsl(125, 24%, 39%)'
+                    />
+                </View>
             </View>
         );
     }
@@ -32,5 +45,22 @@ class WelcomeScreen extends Component {
         this.props.navigation.navigate('App');
     };
 }
+
+var styles = StyleSheet.create({
+  logo: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+    marginBottom: 30
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10
+  },
+  button: {
+    marginBottom: 18,
+  }
+});
 
 export default WelcomeScreen;

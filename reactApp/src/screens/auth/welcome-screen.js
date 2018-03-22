@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Image, StyleSheet, Text, TextInput , View } from 'react-native';
-
+import SporklyButton from '../../components/SporklyButton';
 class WelcomeScreen extends Component {
     static navigationOptions = {
         title: 'Sign In',
@@ -22,16 +22,16 @@ class WelcomeScreen extends Component {
 
                 <Text>{"\n"}</Text>
                 <View style={styles.button}>
-                    <Button
+                    <SporklyButton
                         title='Sign In'
                         onPress={this._signInAsync}
-                        color='hsl(88, 50%, 53%)'
+                        //color='hsl(88, 50%, 53%)'
                     />
                     <Text>{"\n"}</Text>
-                    <Button
+                    <SporklyButton
                         title='Register'
                         onPress={() => this.props.navigation.navigate('Register')}
-                        color='hsl(125, 24%, 39%)'
+                        //color='hsl(125, 24%, 39%)'
                     />
                 </View>
             </View>

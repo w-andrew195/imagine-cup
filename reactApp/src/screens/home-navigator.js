@@ -45,7 +45,7 @@ const HomeTabs = TabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: 'tomato',
+      activeTintColor: 'green',
       inactiveTintColor: 'gray',
     },
     tabBarComponent: TabBarBottom,

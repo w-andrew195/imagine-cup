@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
+import SporklyButton from '../../components/SporklyButton';
 
 class RegisterScreen extends Component {
     static navigationOptions = {
@@ -16,9 +17,8 @@ class RegisterScreen extends Component {
                 <TextInput placeholder='Password' secureTextEntry={true} />
                 <TextInput placeholder='Re-enter Password' secureTextEntry={true} />
                 <Text>{"\n"}</Text>
-                <Button
+                <SporklyButton
                     title="Finish"
-                    color='hsl(88, 50%, 53%)'
                     onPress={this._registerAsync}
                 />
             </View>

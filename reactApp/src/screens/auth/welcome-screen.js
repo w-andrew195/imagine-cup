@@ -43,7 +43,7 @@ class WelcomeScreen extends Component {
                         onPress={() => this.props.navigation.navigate('Register')}
                       
                     />
-                </View>
+                </View >
             </KeyboardAvoidingView>
         );
     }

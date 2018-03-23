@@ -20,7 +20,7 @@ export default class SporklyButton extends Component {
                 borderRadius: 20,
                 paddingTop: 10,
                 paddingBottom: 10,
-                width: 400,
+                width: 300,
 
             }}>
             <View style={{}}>

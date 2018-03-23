@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Image, StyleSheet, Text, TextInput , View } from 'react-native';
+import { Button, Image, StyleSheet, Text, TextInput , View, KeyboardAvoidingView } from 'react-native';
 import SporklyButton from '../../components/SporklyButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -11,7 +11,8 @@ class WelcomeScreen extends Component {
 
     render() {
         return (
-            <View>
+            <KeyboardAvoidingView behavior="position">
+                
                 <View style={styles.logo}>
                     <Image
                         source={ require( '../../assets/sporkly_logo_485.png') }
@@ -43,7 +44,7 @@ class WelcomeScreen extends Component {
                       
                     />
                 </View>
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 

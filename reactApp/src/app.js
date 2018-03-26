@@ -16,6 +16,7 @@ import { StackNavigator, SwitchNavigator } from 'react-navigation';
 import StartScreen from './screens/auth/start-screen';
 import WelcomeScreen from './screens/auth/welcome-screen';
 import RegisterScreen from './screens/auth/register-screen';
+import RecipeScreen from './screens/recipe';
 
 import HomeTabs from './screens/home-navigator';
 
@@ -23,6 +24,9 @@ const AppStack = StackNavigator(
     {
         Home : {
             screen: HomeTabs
+        },
+        Recipe : {
+            screen: RecipeScreen
         },
     },
     { navigationOptions: { header : null } },

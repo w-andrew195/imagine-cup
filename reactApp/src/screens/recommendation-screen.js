@@ -41,7 +41,8 @@ class RecommendationScreen extends Component {
                                               marginRight: 0, 
                                               marginBottom: 0,
                                               borderRadius:20 }}
-                            title='Show Recipe' />
+                            title='Show Recipe'
+                            onPress={() => this.props.navigation.navigate('Recipe', { id: 1 })} />
                     </Card>
                     
                     <Text>{"\n"}</Text>

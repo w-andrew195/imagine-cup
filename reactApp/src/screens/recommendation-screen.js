@@ -2,25 +2,19 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, Image } from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import HeaderSub from '../components/HeaderSub';
+import HeaderMain from '../components/HeaderMain';
+
 class RecommendationScreen extends Component {
 
     render() {
         return (
 
             <View>
-                <Text>{"\n"}</Text>
-                <Text style={{ color: 'hsl(0, 0%, 32%)',
-                             fontWeight: 'bold', 
-                             fontSize: 30 ,
-                             fontFamily: "sans-serif"}}>
-                    Today's Recommendation
-                </Text>
-                <View
-                    style={{
-                        borderBottomColor: 'hsl(0, 0%, 70%)',
-                        borderBottomWidth: 0.6,
-                    }}
-                />
+
+                <HeaderMain text="Today's Recommendation" />
+
                 <ScrollView
                 //horizontal={true}>
                 >
@@ -46,12 +40,9 @@ class RecommendationScreen extends Component {
                     </Card>
                     
                     <Text>{"\n"}</Text>
-                    <Text style={{ color: 'hsl(0, 0%, 32%)',
-                             fontWeight: 'bold', 
-                             fontSize: 20 ,
-                             fontFamily: "sans-serif"}}>
-                    New Recipes
-                </Text>
+
+                    <HeaderSub text='New Recipes' />
+
                 <ScrollView horizontal={true}>
                 <Card title='Carrot and Lentil Soup'
                         containerStyle={{ borderRadius: 10 ,height: 230, width: 200}}

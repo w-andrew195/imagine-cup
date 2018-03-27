@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Image, Slider, Text, View,ScrollView } from 'react-native';
 
+import HeaderSub from '../components/HeaderSub';
+
 class RecipeScreen extends Component {
     state = {
         baseCals : 0,
@@ -154,12 +156,9 @@ class RecipeScreen extends Component {
                         {this.state.recipe.description}
                     </Text>
                     <View>
-                        <Text style={{ color: 'hsl(0, 0%, 32%)',
-                                 fontWeight: 'bold', 
-                                 fontSize: 20 ,
-                                 fontFamily: "sans-serif"}}>
-                            Nutrition
-                        </Text>
+
+                        <HeaderSub text='Nutrition' />
+
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
                             <Text style={{ fontWeight : 'bold' }}>
                                 Calories
@@ -192,12 +191,9 @@ class RecipeScreen extends Component {
 
                     </View>
                     <View>
-                        <Text style={{ color: 'hsl(0, 0%, 32%)',
-                                 fontWeight: 'bold', 
-                                 fontSize: 20 ,
-                                 fontFamily: "sans-serif"}}>
-                            Ingredients
-                        </Text>
+
+                        <HeaderSub text='Ingredients' />
+
                         {this.state.scaledIngredients.map((item, index) => (
                             <View key={index} style={{ flexDirection: 'row',
                                                        justifyContent: 'space-between',
@@ -208,12 +204,9 @@ class RecipeScreen extends Component {
                             </View>
                             )
                         )}
-                        <Text style={{ color: 'hsl(0, 0%, 32%)',
-                                 fontWeight: 'bold', 
-                                 fontSize: 20 ,
-                                 fontFamily: "sans-serif"}}>
-                            Instructions
-                        </Text>
+
+                        <HeaderSub text='Instructions' />
+
                         <Text>
                             {this.state.recipe.instructions}
                         </Text>

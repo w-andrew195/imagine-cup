@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Image, Slider, Text, View,ScrollView } from 'react-native';
 
+import HeaderMain from '../components/HeaderMain';
 import HeaderSub from '../components/HeaderSub';
 
 class RecipeScreen extends Component {
@@ -130,21 +131,9 @@ class RecipeScreen extends Component {
     render() {
         return (
             <View style={{flex: 1}}>
-                <Text>{"\n"}</Text>
-                <Text style={{ color: 'hsl(0, 0%, 32%)',
-                             fontWeight: 'bold', 
-                             fontSize: 30 ,
-                             fontFamily: "sans-serif"}}>
-                {
-                    this.state.recipe.name
-                }
-                </Text>
-                <View
-                    style={{
-                        borderBottomColor: 'hsl(0, 0%, 70%)',
-                        borderBottomWidth: 0.6,
-                    }}
-                />
+
+                <HeaderMain text={this.state.recipe.name} />
+
                 <ScrollView style={{marginLeft: 10, marginRight: 10}}>
                     <Image source={require('../assets/recipe01.jpg')}
                            style={{width: 300,

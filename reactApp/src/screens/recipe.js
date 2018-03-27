@@ -91,36 +91,34 @@ class RecipeScreen extends Component {
     }
 
     updatePersonalCals(value) {
-        this.setState({personalCals : value}, () => {
-            var scaleFactor = this.state.personalCals / this.state.baseCals;
-            this.setState({scaleFactor}, () => {
-                var protein = 0;
-                var carbohydrates = 0;
-                var fat = 0;
+        var scaleFactor = value / this.state.baseCals;
+        var protein = 0;
+        var carbohydrates = 0;
+        var fat = 0;
 
-                for (var i = 0; i < this.state.scaledIngredients.length; i++){
-                    var ing = this.state.scaledIngredients[i];
-                    ing.amount = this.state.recipe.ingredients[i].amount * this.state.scaleFactor;
-                    if (ing.amount < 20) {
-                        ing.amount = ing.amount.toFixed(1);
-                    } else {
-                        ing.amount = parseInt(ing.amount);
-                    };
-                };
+        for (var i = 0; i < this.state.scaledIngredients.length; i++){
+            var ing = this.state.scaledIngredients[i];
+            ing.amount = this.state.recipe.ingredients[i].amount * scaleFactor;
+            if (ing.amount < 20) {
+                ing.amount = ing.amount.toFixed(1);
+            } else {
+                ing.amount = ing.amount.toFixed(0);
+            };
+        };
 
-                for (var i = 0; i < this.state.scaledIngredients.length; i++){
-                    var ing = this.state.scaledIngredients[i];
-                    protein += ing.protein * ing.amount / 100;
-                    carbohydrates += ing.carbohydrates * ing.amount / 100;
-                    fat += ing.fat * ing.amount / 100;
-                };
+        for (var i = 0; i < this.state.scaledIngredients.length; i++){
+            var ing = this.state.scaledIngredients[i];
+            protein += ing.protein * ing.amount / 100;
+            carbohydrates += ing.carbohydrates * ing.amount / 100;
+            fat += ing.fat * ing.amount / 100;
+        };
 
-                this.setState( { protein : protein.toFixed(1)})
-                this.setState( { carbohydrates: carbohydrates.toFixed(1)})
-                this.setState( { fat : fat.toFixed(1)})
-            });
+        this.setState({
+            personalCals    : value,
+            protein         : protein.toFixed(1),
+            carbohydrates   : carbohydrates.toFixed(1),
+            fat             : fat.toFixed(1)
         });
-
 
     }
 

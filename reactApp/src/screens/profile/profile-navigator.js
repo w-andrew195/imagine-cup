@@ -83,7 +83,7 @@ const ProfileStack = StackNavigator({
                             fontSize: 30,
                             fontFamily: "sans-serif"
                         }}>
-                            My Meal Planner
+                            My Profile
                 </Text>
                 <View
                 style={{

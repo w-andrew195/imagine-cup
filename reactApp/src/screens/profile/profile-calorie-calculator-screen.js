@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import { Button, Text, View,ScrollView } from 'react-native';
+import { Button, Text, View,ScrollView, TextInput } from 'react-native';
 
 class CalorieCalculatorScreen extends Component {
 
     render() {
-        return (
+ 
 
+        return (
             <View>
-            <Text>{"\n"}</Text>
-            <Text style={{ color: 'hsl(0, 0%, 32%)',
-                         fontWeight: 'bold', 
-                         fontSize: 30 ,
-                         fontFamily: "sans-serif"}}>
-                Calories
-            </Text>
-           
-           
-           
-        </View>
+            <TextInput placeholder='Age' />
+            <Text></Text>
+            <TextInput placeholder='Current Weight (kg)' keyboardType='numeric' />
+            <TextInput placeholder='Height (cm)' secureTextEntry={true} />
+            <TextInput placeholder='Re-enter Password' secureTextEntry={true} />
+            </View>
         );
     }
 }
+
+
 
 export default CalorieCalculatorScreen;

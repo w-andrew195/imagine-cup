@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, View,ScrollView } from 'react-native';
+import { Button, Text, View,ScrollView, TextInput } from 'react-native';
 
 import HeaderSub from '../../components/HeaderSub';
 
@@ -7,9 +7,13 @@ class CalorieCalculatorScreen extends Component {
 
     render() {
         return (
-
-            <HeaderSub text='Calculator' />
-
+            <View>
+            <TextInput placeholder='Age' />
+            <Text></Text>
+            <TextInput placeholder='Current Weight (kg)' keyboardType='numeric' />
+            <TextInput placeholder='Height (cm)' secureTextEntry={true} />
+            <TextInput placeholder='Re-enter Password' secureTextEntry={true} />
+            </View>
         );
     }
 }

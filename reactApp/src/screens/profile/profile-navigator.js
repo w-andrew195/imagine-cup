@@ -78,9 +78,7 @@ const ProfileStack = StackNavigator({
             {
                 header: headerProps => {
                     return (
-
                             <HeaderMain text='My Profile' />
-
                     )
                 }
             }

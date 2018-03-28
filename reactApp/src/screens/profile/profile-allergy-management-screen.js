@@ -61,6 +61,8 @@ const list = [
 ]
 
 
+import HeaderSub from '../../components/HeaderSub';
+
 class AllergyManagementScreen extends Component {
     state = {
         term: '',

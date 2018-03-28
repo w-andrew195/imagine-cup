@@ -8,6 +8,9 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
+
+import HeaderMain from '../../components/HeaderMain';
+
 import CookingSkillScreen from '../profile/profile-cooking-skill-screen';
 import AllergyManagementScreen from '../profile/profile-allergy-management-screen';
 import CalorieCalculatorScreen from '../profile/profile-calorie-calculator-screen';
@@ -75,23 +78,7 @@ const ProfileStack = StackNavigator({
             {
                 header: headerProps => {
                     return (
-                        <View>
-                        <Text>{'\n'}</Text>
-                        <Text style={{
-                            color: 'hsl(0, 0%, 32%)',
-                            fontWeight: 'bold',
-                            fontSize: 30,
-                            fontFamily: "sans-serif"
-                        }}>
-                            My Profile
-                </Text>
-                <View
-                style={{
-                    borderBottomColor: 'hsl(0, 0%, 70%)',
-                    borderBottomWidth: 0.6,
-                }}
-            />
-                </View>
+                            <HeaderMain text='My Profile' />
                     )
                 }
             }

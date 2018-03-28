@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Text, View, ScrollView, TextInput } from 'react-native';
-import { SearchBar, List, ListItem } from 'react-native-elements';
+import { Button, ScrollView, Text, TextInput, View } from 'react-native';
+import { List, ListItem, SearchBar } from 'react-native-elements';
 
 const list = [
     {
@@ -59,21 +59,20 @@ const list = [
        
     }
 ]
-   
-
-
 
 
 class AllergyManagementScreen extends Component {
     state = {
         term: '',
-        showterm: ''
     };
 
-
     render() {
-        return (
+        // sanitize by removing non-alphabetic
+        // characters from term
+        var term = this.state.term.replace(/[^A-Z]/gi, "");
+        var regex = RegExp(term, 'gi');
 
+        return (
             <View>
                 <SearchBar
                     lightTheme
@@ -84,27 +83,27 @@ class AllergyManagementScreen extends Component {
                     placeholder='Type Here...' />
 
                 <ScrollView>
-                <List containerStyle={{ marginBottom: 20 }}>
-                    {
-                        list.map((l, i) => (
-                            <ListItem
-                                roundAvatar
-                                avatar={{ uri: l.avatar_url }}
-                                key={i}
-                                title={l.name}
-                            />
-                        ))
-                    }
-                </List>
+                    <List containerStyle={{ marginBottom: 20 }}>
+                        {
+                            list.map( (l, i) => {
+                                if( l.name.match(regex)) {
+                                    return (
+                                        <ListItem
+                                            roundAvatar
+                                            avatar={{ uri: l.avatar_url }}
+                                            key={i}
+                                            title={l.name}
+                                        />
+                                    )
+                                }
+                            })
+                        }
+                    </List>
                 </ScrollView>
-
             </View>
-
-
         );
     }
 }
-
 
 
 export default AllergyManagementScreen;

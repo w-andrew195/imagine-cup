@@ -4,6 +4,39 @@ import { Button, Image, Slider, Text, View,ScrollView } from 'react-native';
 import HeaderMain from '../components/HeaderMain';
 import HeaderSub from '../components/HeaderSub';
 
+class IngredientRow extends Component {
+    render() {
+        return (
+            <View style={{ flexDirection: 'row',
+                           justifyContent: 'space-between',
+                           marginLeft: 10,
+                           marginRight: 10 }}>
+                <Text style={{color: 'hsl(125, 24%, 39%)', fontWeight: 'bold'}}>
+                    • {this.props.name}
+                </Text>
+                <Text>
+                    {this.props.amount + (this.props.unitType == 'SOLID' ? 'g' : 'ml')}
+                </Text>
+            </View>
+        );
+    }
+}
+
+class NutritionData extends Component {
+    render() {
+        return (
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Text style={{ fontWeight : 'bold', marginRight: 6 }}>
+                    {this.props.label}
+                </Text>
+                <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
+                    {this.props.value}g
+                </Text>
+            </View>
+        );
+    }
+}
+
 class RecipeScreen extends Component {
     state = {
         baseCals : 0,
@@ -91,36 +124,34 @@ class RecipeScreen extends Component {
     }
 
     updatePersonalCals(value) {
-        this.setState({personalCals : value}, () => {
-            var scaleFactor = this.state.personalCals / this.state.baseCals;
-            this.setState({scaleFactor}, () => {
-                var protein = 0;
-                var carbohydrates = 0;
-                var fat = 0;
+        var scaleFactor = value / this.state.baseCals;
+        var protein = 0;
+        var carbohydrates = 0;
+        var fat = 0;
 
-                for (var i = 0; i < this.state.scaledIngredients.length; i++){
-                    var ing = this.state.scaledIngredients[i];
-                    ing.amount = this.state.recipe.ingredients[i].amount * this.state.scaleFactor;
-                    if (ing.amount < 20) {
-                        ing.amount = ing.amount.toFixed(1);
-                    } else {
-                        ing.amount = parseInt(ing.amount);
-                    };
-                };
+        for (var i = 0; i < this.state.scaledIngredients.length; i++){
+            var ing = this.state.scaledIngredients[i];
+            ing.amount = this.state.recipe.ingredients[i].amount * scaleFactor;
+            if (ing.amount < 20) {
+                ing.amount = ing.amount.toFixed(1);
+            } else {
+                ing.amount = ing.amount.toFixed(0);
+            };
+        };
 
-                for (var i = 0; i < this.state.scaledIngredients.length; i++){
-                    var ing = this.state.scaledIngredients[i];
-                    protein += ing.protein * ing.amount / 100;
-                    carbohydrates += ing.carbohydrates * ing.amount / 100;
-                    fat += ing.fat * ing.amount / 100;
-                };
+        for (var i = 0; i < this.state.scaledIngredients.length; i++){
+            var ing = this.state.scaledIngredients[i];
+            protein += ing.protein * ing.amount / 100;
+            carbohydrates += ing.carbohydrates * ing.amount / 100;
+            fat += ing.fat * ing.amount / 100;
+        };
 
-                this.setState( { protein : protein.toFixed(1)})
-                this.setState( { carbohydrates: carbohydrates.toFixed(1)})
-                this.setState( { fat : fat.toFixed(1)})
-            });
+        this.setState({
+            personalCals    : value,
+            protein         : protein.toFixed(1),
+            carbohydrates   : carbohydrates.toFixed(1),
+            fat             : fat.toFixed(1)
         });
-
 
     }
 
@@ -131,7 +162,6 @@ class RecipeScreen extends Component {
     render() {
         return (
             <View style={{flex: 1}}>
-
                 <HeaderMain text={this.state.recipe.name} />
 
                 <ScrollView style={{marginLeft: 10, marginRight: 10}}>
@@ -144,63 +174,43 @@ class RecipeScreen extends Component {
                     <Text>
                         {this.state.recipe.description}
                     </Text>
-                    <View>
 
-                        <HeaderSub text='Nutrition' />
-
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <Text style={{ fontWeight : 'bold' }}>
-                                Calories
-                            </Text>
-                            <Slider minimumValue={300} maximumValue={1200} style={{width: 200}} value={this.state.personalCals} onValueChange={value => this.updatePersonalCals(value)} step={1}/>
-                            <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
-                                {this.state.personalCals}
-                            </Text>
-                        </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <Text style={{ fontWeight : 'bold' }}>
-                                Carbs
-                            </Text>{}
-                            <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
-                                {this.state.carbohydrates}
-                            </Text>
-                            <Text style={{ fontWeight : 'bold' }}>
-                                Protein
-                            </Text>{}
-                            <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
-                                {this.state.protein}
-                            </Text>
-                            <Text style={{ fontWeight : 'bold' }}>
-                                Fat
-                            </Text>{}
-                            <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
-                                {this.state.fat}
-                            </Text>
-                        </View>
-
-                    </View>
-                    <View>
-
-                        <HeaderSub text='Ingredients' />
-
-                        {this.state.scaledIngredients.map((item, index) => (
-                            <View key={index} style={{ flexDirection: 'row',
-                                                       justifyContent: 'space-between',
-                                                       marginLeft: 10,
-                                                       marginRight: 10 }}>
-                                <Text style={{color: 'hsl(125, 24%, 39%)', fontWeight: 'bold'}}>• {item.name}</Text>
-                                <Text>{item.amount + (item.unitType == 'SOLID' ? 'g' : 'ml')}</Text>
-                            </View>
-                            )
-                        )}
-
-                        <HeaderSub text='Instructions' />
-
-                        <Text>
-                            {this.state.recipe.instructions}
+                    <HeaderSub text='Nutrition' />
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <Text style={{ fontWeight : 'bold' }}>
+                            Calories
                         </Text>
+                        <Slider style={{width: 200}}
+                                minimumValue={300}
+                                maximumValue={1200}
+                                step={10}
+                                value={this.state.personalCals}
+                                onValueChange={value => this.updatePersonalCals(value)}
+                        />
 
+                        <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
+                            {this.state.personalCals}
+                        </Text>
                     </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <NutritionData label='Carbs' value={this.state.carbohydrates} />
+                        <NutritionData label='Protein' value={this.state.protein} />
+                        <NutritionData label='Fat' value={this.state.fat} />
+                    </View>
+
+                    <HeaderSub text='Ingredients' />
+                    {this.state.scaledIngredients.map((item, index) => (
+                        <IngredientRow key={index}
+                                       name={item.name}
+                                       amount={item.amount}
+                                       unitType={item.unitType} />
+                        )
+                    )}
+
+                    <HeaderSub text='Instructions' />
+                    <Text>
+                        {this.state.recipe.instructions}
+                    </Text>
                 </ScrollView>
         </View>
         );

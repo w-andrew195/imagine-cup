@@ -27,7 +27,7 @@ class SearchScreen extends Component {
                     }}>
 
                         <Card title='Dessert'
-                            containerStyle={{ borderRadius: 10, height: 260, width: 175 }}
+                            containerStyle={{ borderRadius: 10, height: 260, width: 175, flex:1}}
 
                             imageStyle={{ height: 130 }}
                             image={require('../assets/Search01.jpg')}
@@ -54,7 +54,7 @@ class SearchScreen extends Component {
                                 title='More' />
                         </Card>
                         <Card title='Meat Lover'
-                            containerStyle={{ borderRadius: 10, height: 260, width: 175 }}
+                            containerStyle={{ borderRadius: 10, height: 260, width: 175, flex:1}}
 
                             imageStyle={{ height: 130 }}
                             image={require('../assets/Search02.jpg')}
@@ -87,7 +87,7 @@ class SearchScreen extends Component {
                     }}>
 
                         <Card title='Vegetarian'
-                            containerStyle={{ borderRadius: 10, height: 260, width: 175 }}
+                            containerStyle={{ borderRadius: 10, height: 260, width: 175, flex:1}}
 
                             imageStyle={{ height: 130 }}
                             image={require('../assets/Search03.jpg')}
@@ -114,7 +114,7 @@ class SearchScreen extends Component {
                                 title='More' />
                         </Card>
                         <Card title='Seafood Lover'
-                            containerStyle={{ borderRadius: 10, height: 260, width: 175 }}
+                            containerStyle={{ borderRadius: 10, height: 260, width: 175, flex:1}}
 
                             imageStyle={{ height: 130 }}
                             image={require('../assets/Search04.jpg')}

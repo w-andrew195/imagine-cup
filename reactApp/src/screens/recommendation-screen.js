@@ -28,6 +28,13 @@ class RecommendationScreen extends Component {
                             Use the pressure cooker to make short work of an Indian-inspired chicken and chickpea curry.
                         </Text>
                         <Button
+                             onPress={() => Alert.alert(
+                                'Alert',
+                                'Not Available',
+                                [
+                                    { text: 'OK', onPress: () => console.log('OK Pressed!') }
+                                ]
+                            )}
                             backgroundColor='hsl(88,  50%, 53%)'
                             fontFamily='Lato'
                             buttonStyle={{ borderRadius: 0,
@@ -65,6 +72,13 @@ class RecommendationScreen extends Component {
                         image={require('../assets/recipe03.jpeg')} >
                        
                         <Button
+                             onPress={() => Alert.alert(
+                                'Alert',
+                                'Not Available',
+                                [
+                                    { text: 'OK', onPress: () => console.log('OK Pressed!') }
+                                ]
+                            )}
                             backgroundColor='hsl(88,  50%, 53%)'
                             fontFamily='Lato'
                             buttonStyle={{ borderRadius: 0,
@@ -80,6 +94,13 @@ class RecommendationScreen extends Component {
                         image={require('../assets/recipe04.jpg')} >
                        
                         <Button
+                             onPress={() => Alert.alert(
+                                'Alert',
+                                'Not Available',
+                                [
+                                    { text: 'OK', onPress: () => console.log('OK Pressed!') }
+                                ]
+                            )}
                             backgroundColor='hsl(88,  50%, 53%)'
                             fontFamily='Lato'
                             buttonStyle={{ borderRadius: 0,

@@ -12,7 +12,7 @@ export default class HeaderSub extends Component {
                     fontSize: 30,
                     fontFamily: "sans-serif",
                     marginTop: 10,
-                    marginLeft: 4
+                    marginLeft: 8
                 }}>
                     {this.props.text}
                 </Text>

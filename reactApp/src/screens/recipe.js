@@ -13,10 +13,10 @@ class IngredientRow extends Component {
                            justifyContent: 'space-between',
                            marginLeft: 10,
                            marginRight: 10 }}>
-                <Text style={{color: 'hsl(125, 24%, 39%)', fontWeight: 'bold'}}>
+                <Text style={{color: 'hsl(125, 24%, 39%)', fontWeight: 'bold',fontSize: 18}}>
                     • {this.props.name}
                 </Text>
-                <Text>
+                <Text style={{fontSize: 18}}>
                     {this.props.amount + (this.props.unitType == 'SOLID' ? 'g' : 'ml')}
                 </Text>
             </View>
@@ -28,11 +28,11 @@ class NutritionData extends Component {
     render() {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style={{ fontWeight : 'bold', marginRight: 6 }}>
+                <Text style={{ fontWeight : 'bold', marginRight: 6, fontSize: 18 }}>
                     {this.props.label}
                 </Text>
-                <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
-                    {this.props.value}g
+                <Text style={{ color: 'hsl(88, 50%, 53%)', fontSize: 18 }}>
+                    {this.props.value}
                 </Text>
             </View>
         );
@@ -119,13 +119,13 @@ class RecipeScreen extends Component {
                                    alignSelf: 'center',
                                    borderRadius: 20,
                                    marginTop: 12}} />
-                    <Text>
+                    <Text style={{fontSize: 18, marginTop: 12}}>
                         {this.state.recipe.description}
                     </Text>
-
+                     <Text>{"\n"}</Text>
                     <HeaderSub text='Nutrition' />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Text style={{ fontWeight : 'bold' }}>
+                        <Text style={{ fontWeight : 'bold', fontSize: 18 }}>
                             Calories
                         </Text>
                         <Slider style={{width: 200}}
@@ -136,7 +136,7 @@ class RecipeScreen extends Component {
                                 onValueChange={value => this.updatePersonalCals(value)}
                         />
 
-                        <Text style={{ color: 'hsl(88, 50%, 53%)' }}>
+                        <Text style={{ color: 'hsl(88, 50%, 53%)', fontSize: 18}}>
                             {this.state.personalCals}
                         </Text>
                     </View>
@@ -145,7 +145,7 @@ class RecipeScreen extends Component {
                         <NutritionData label='Protein' value={this.state.protein} />
                         <NutritionData label='Fat' value={this.state.fat} />
                     </View>
-
+                    <Text>{"\n"}</Text>
                     <HeaderSub text='Ingredients' />
                     {this.state.scaledIngredients.map((item, index) => (
                         <IngredientRow key={index}
@@ -154,9 +154,9 @@ class RecipeScreen extends Component {
                                        unitType={item.unitType} />
                         )
                     )}
-
+                     <Text>{"\n"}</Text>
                     <HeaderSub text='Instructions' />
-                    <Text>
+                    <Text style={{fontSize: 18}}>
                         {this.state.recipe.instructions}
                     </Text>
                 </ScrollView>

@@ -36,7 +36,7 @@ class CookSkillScreen extends Component {
                     marginBottom: 10,
                     fontFamily: "sans-serif",
                     marginTop: 20
-                }}>My Favourate Food:</Text>
+                }}>My Favourite Food:</Text>
                 <View style={{ flexDirection: 'column' }}>
                     <View style={{ flexDirection: 'row' }}>
                         <CheckBox

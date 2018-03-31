@@ -11,7 +11,7 @@ class WelcomeScreen extends Component {
 
     render() {
         return (
-            <KeyboardAvoidingView behavior="position">
+            <KeyboardAvoidingView behavior='position'>
                 
                 <View style={styles.logo}>
                     <Image
@@ -44,6 +44,7 @@ class WelcomeScreen extends Component {
                       
                     />
                 </View >
+                <View style={{ height: 30}} />
             </KeyboardAvoidingView>
         );
     }

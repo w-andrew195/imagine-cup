@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Text, TextInput, View } from 'react-native';
+
 import SporklyButton from '../../components/SporklyButton';
 
 class RegisterScreen extends Component {
@@ -10,10 +11,9 @@ class RegisterScreen extends Component {
 
     render() {
         return (
-            <View>
+            <KeyboardAvoidingView behaviour='position' >
                 <TextInput placeholder='Username' />
                 <TextInput placeholder='Email Address' keyboardType='email-address' />
-                <TextInput placeholder='Date of Birth' keyboardType='numeric' />
                 <TextInput placeholder='Password' secureTextEntry={true} />
                 <TextInput placeholder='Re-enter Password' secureTextEntry={true} />
                 <Text>{"\n"}</Text>
@@ -21,7 +21,7 @@ class RegisterScreen extends Component {
                     title="Finish"
                     onPress={this._registerAsync}
                 />
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 

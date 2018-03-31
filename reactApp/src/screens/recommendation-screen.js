@@ -1,10 +1,34 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image } from 'react-native';
+import { Alert, Text, View, ScrollView, Image } from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import HeaderSub from '../components/HeaderSub';
 import HeaderMain from '../components/HeaderMain';
+
+class AlertButton extends Component {
+
+    render() {
+        return (
+            <Button
+                 onPress={() => Alert.alert(
+                    'Alert',
+                    'Not Available',
+                    [
+                        { text: 'OK', onPress: () => console.log('OK Pressed!') }
+                    ]
+                )}
+                backgroundColor='hsl(88,  50%, 53%)'
+                fontFamily='Lato'
+                buttonStyle={{ borderRadius: 0,
+                                 marginLeft: 0,
+                                  marginRight: 0, 
+                                  marginBottom: 0,
+                                  borderRadius:20 }}
+                title='More' />
+        );
+    }
+}
 
 class RecommendationScreen extends Component {
 
@@ -28,13 +52,6 @@ class RecommendationScreen extends Component {
                             Use the pressure cooker to make short work of an Indian-inspired chicken and chickpea curry.
                         </Text>
                         <Button
-                             onPress={() => Alert.alert(
-                                'Alert',
-                                'Not Available',
-                                [
-                                    { text: 'OK', onPress: () => console.log('OK Pressed!') }
-                                ]
-                            )}
                             backgroundColor='hsl(88,  50%, 53%)'
                             fontFamily='Lato'
                             buttonStyle={{ borderRadius: 0,
@@ -51,64 +68,29 @@ class RecommendationScreen extends Component {
                     <HeaderSub text='New Recipes' />
 
                 <ScrollView horizontal={true}>
+
                 <Card title='Carrot and Lentil Soup'
                         containerStyle={{ borderRadius: 10 ,height: 230, width: 200}}
                         imageStyle={{ height: 100 }}
                         image={require('../assets/recipe02.jpg')} >
                        
-                        <Button
-                            backgroundColor='hsl(88,  50%, 53%)'
-                            fontFamily='Lato'
-                            buttonStyle={{ borderRadius: 0,
-                                             marginLeft: 0,
-                                              marginRight: 0, 
-                                              marginBottom: 0,
-                                              borderRadius:20 }}
-                            title='More' />
-                    </Card>
-                    <Card title='Asian Noddle Salad'
+                    <AlertButton />
+                </Card>
+
+                    <Card title='Asian Noodle Salad'
                         containerStyle={{ borderRadius: 10 ,height: 230, width: 200}}
                         imageStyle={{ height: 100 }}
                         image={require('../assets/recipe03.jpeg')} >
                        
-                        <Button
-                             onPress={() => Alert.alert(
-                                'Alert',
-                                'Not Available',
-                                [
-                                    { text: 'OK', onPress: () => console.log('OK Pressed!') }
-                                ]
-                            )}
-                            backgroundColor='hsl(88,  50%, 53%)'
-                            fontFamily='Lato'
-                            buttonStyle={{ borderRadius: 0,
-                                             marginLeft: 0,
-                                              marginRight: 0, 
-                                              marginBottom: 0,
-                                              borderRadius:20 }}
-                            title='More' />
+                    <AlertButton />
                     </Card>
+
                     <Card title='Strawberry Salsa'
                         containerStyle={{ borderRadius: 10 ,height: 230, width: 200}}
                         imageStyle={{ height: 100 }}
                         image={require('../assets/recipe04.jpg')} >
                        
-                        <Button
-                             onPress={() => Alert.alert(
-                                'Alert',
-                                'Not Available',
-                                [
-                                    { text: 'OK', onPress: () => console.log('OK Pressed!') }
-                                ]
-                            )}
-                            backgroundColor='hsl(88,  50%, 53%)'
-                            fontFamily='Lato'
-                            buttonStyle={{ borderRadius: 0,
-                                             marginLeft: 0,
-                                              marginRight: 0, 
-                                              marginBottom: 0,
-                                              borderRadius:20 }}
-                            title='More' />
+                    <AlertButton />
                     </Card>
                     
                     
